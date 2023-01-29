@@ -1,17 +1,18 @@
-﻿
+
 #include <iostream>
 class Calculator {
 public:
-    double num1() { return get_num1; }
-    double num2() { return get_num2; }
-    void set_priv_field1(int value) {  get_num1 = value; }
-    void set_priv_field2(int value) {  get_num2 = value; }
+
+    Calculator(double num1, double num2) {
+        this->num1 = num1;
+        this->num2 = num2;
+    }
     double add() {
         double num3 = num1 + num2;
         std::cout << "num1 + num2 = " << num3 << std::endl;
         return num3;
     }
-    double multiply(){
+    double multiply() {
         double num3 = num1 * num2;
         std::cout << "num1 * num2 = " << num3 << std::endl;
         return num3;
@@ -36,7 +37,7 @@ public:
         std::cout << "num2 / num1 = " << num3 << std::endl;
         return num3;
     }
-    bool set_num1(double num1) {
+    bool set_num1() {
         if (num1 == 0) {
             return false;
         }
@@ -44,7 +45,7 @@ public:
             return true;
         }
     }
-    bool set_num2(double num2) {
+    bool set_num2() {
         if (num2 == 0) {
             return false;
         }
@@ -52,10 +53,10 @@ public:
             return true;
         }
     }
- 
+
 private:
-    double get_num1 = 1, get_num2 = 1;
- 
+    double num1 ,num2;
+
 
 };
 
@@ -69,21 +70,18 @@ int main()
         std::cin >> num1;
         std::cout << "enter num 2: ";
         std::cin >> num2;
-        Calculator name;
-        name.set_priv_field1(num1);
-        name.set_priv_field2(num2);
+        Calculator calculator(num1, num2);
 
 
-        if (name.set_num1() * name.set_num2() == false) {
+        if (calculator.set_num1() * calculator.set_num2() == false) {
             std::cout << "Invaild input!\n";
             continue;
         }
-        name.add();
-        name.multiply();
-        name.subtract_1_2();
-        name.subtract_2_1();
-        name.divide_1_2();
-        name.divide_2_1();
+        calculator.add();
+        calculator.multiply();
+        calculator.subtract_1_2();
+        calculator.subtract_2_1();
+        calculator.divide_1_2();
+        calculator.divide_2_1();
     }
 }
-
