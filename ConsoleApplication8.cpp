@@ -3,9 +3,9 @@
 class Calculator {
 public:
 
-    Calculator(double num1, double num2) {
-        this->num1 = num1;
-        this->num2 = num2;
+    Calculator() {
+        this->num1 = 1;
+        this->num2 = 1;
     }
     double add() {
         double num3 = num1 + num2;
@@ -37,25 +37,27 @@ public:
         std::cout << "num2 / num1 = " << num3 << std::endl;
         return num3;
     }
-    bool set_num1() {
-        if (num1 == 0) {
-            return false;
+    bool set_num1(double num1) {
+        if (num1 != 0) {
+            this->num1 = num1;
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
-    bool set_num2() {
-        if (num2 == 0) {
-            return false;
+    bool set_num2(double num2) {
+        if (num2 != 0) {
+            this->num2 = num2;
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 
 private:
-    double num1 ,num2;
+    double num1, num2;
 
 
 };
@@ -70,10 +72,10 @@ int main()
         std::cin >> num1;
         std::cout << "enter num 2: ";
         std::cin >> num2;
-        Calculator calculator(num1, num2);
+        Calculator calculator;
 
 
-        if (calculator.set_num1() * calculator.set_num2() == false) {
+        if (calculator.set_num1(num1) * calculator.set_num2(num2) == false) {
             std::cout << "Invaild input!\n";
             continue;
         }
